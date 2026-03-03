@@ -1,0 +1,1788 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Samantha — A note from Baran</title>
+    <!-- Google Fonts: Playfair Display for headings & Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Premium Dark Theme Variables - Ultra Dark */
+            --bg1: #050203;
+            --bg2: #0a0406;
+            --bg3: #080305;
+            --card: rgba(10, 5, 8, 0.5);
+            --card-border: rgba(255, 117, 160, 0.1);
+            --text: #ffffff;
+            --muted: #8f7480;
+            --shadow: rgba(0, 0, 0, 0.7);
+            --shadow-strong: rgba(0, 0, 0, 0.9);
+
+            /* Refined Luxury accent colors */
+            --accent: #ff6b9d;
+            --accent-2: #c42b4d;
+            --accent-3: #e88bac;
+            --pink: #ff6b9d;
+            --wine-red: #c42b4d;
+            --gold: #d4af37;
+            --radius: 28px;
+            --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Custom Premium Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg1) !important;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--accent-3), var(--accent));
+            background-clip: content-box;
+        }
+
+        /* Firefox support */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--bg1);
+        }
+
+        html {
+            background: var(--bg1);
+        }
+
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background 0.6s ease, color 0.6s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        .counter-value,
+        .modal-title,
+        .signature,
+        .counter-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: linear-gradient(135deg, rgba(20, 10, 15, 0.8) 0%, rgba(5, 2, 4, 0.9) 100%);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: var(--radius);
+            padding: 50px 60px;
+            border: 1px solid var(--card-border);
+            border-top: 1px solid rgba(255, 107, 157, 0.2);
+            border-left: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 40px 80px var(--shadow),
+                0 20px 40px var(--shadow-strong),
+                inset 0 1px 0 rgba(255, 107, 157, 0.05);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Anniversary Navigation */
+        .anniversary-nav {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 20;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .anniversary-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-link {
+            padding: 10px 16px;
+            border-radius: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            min-width: 92px;
+            text-align: center;
+            position: relative;
+            outline: none;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .nav-link.active {
+            color: white;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-link:focus-visible {
+            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.25), 0 8px 20px rgba(255, 107, 157, 0.25);
+        }
+
+        @media (max-width: 768px) {
+            .anniversary-nav {
+                justify-content: flex-start;
+                margin-left: -6px;
+                margin-right: -6px;
+                border-radius: 16px;
+            }
+
+            .nav-link {
+                min-width: 86px;
+            }
+        }
+
+        /* Section Display Rules */
+        .anniversary-section {
+            display: none;
+            animation: sectionFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .anniversary-section.active {
+            display: block;
+        }
+
+        @keyframes sectionFade {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 50px 100px var(--shadow),
+                0 30px 60px var(--shadow-strong),
+                inset 0 1px 0 rgba(255, 107, 157, 0.08);
+        }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(30deg);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .theme-toggle i {
+            font-size: 20px;
+        }
+
+        /* Enhanced decorative elements */
+        .heart {
+            position: absolute;
+            opacity: 0.18;
+            filter: blur(0.2px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart.h1 {
+            width: 160px;
+            right: -40px;
+            top: -50px;
+            transform: rotate(12deg);
+            color: var(--accent);
+        }
+
+        .heart.h2 {
+            width: 100px;
+            left: -25px;
+            bottom: 20px;
+            transform: rotate(-22deg);
+            opacity: 0.12;
+            color: var(--accent-3);
+        }
+
+        .heart.h3 {
+            width: 130px;
+            right: 60px;
+            bottom: -40px;
+            opacity: 0.08;
+            color: var(--accent-2);
+        }
+
+        /* Ribbon enhancement */
+        .ribbon {
+            position: absolute;
+            left: -200px;
+            top: 30px;
+            width: 400px;
+            height: 120px;
+            background: linear-gradient(90deg, rgba(255, 122, 182, 0.1), rgba(124, 58, 237, 0.05));
+            transform: rotate(-10deg);
+            filter: blur(15px);
+            opacity: 0.7;
+            z-index: 0;
+        }
+
+        /* Paper texture */
+        .paper-dots {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .dark-theme .paper-dots {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            opacity: 0.3;
+        }
+
+        /* Header styling */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+            padding-right: 60px;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 44px;
+            margin: 0 0 12px 0;
+            background: linear-gradient(135deg, var(--accent), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .sub {
+            color: var(--muted);
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .meta {
+            text-align: right;
+            padding-left: 20px;
+        }
+
+        .meta .name {
+            font-weight: 800;
+            color: var(--accent-2);
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .meta .small-muted {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Content styling */
+        .content {
+            font-size: 18px;
+            line-height: 1.85;
+            color: var(--text);
+            position: relative;
+            z-index: 2;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .content p {
+            margin: 0 0 24px;
+        }
+
+        .highlight {
+            color: var(--accent-2);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0.3;
+            border-radius: 2px;
+        }
+
+        /* Anniversary counter */
+        .counter {
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.05), rgba(139, 52, 70, 0.03));
+            border-radius: 20px;
+            padding: 30px;
+            margin: 35px 0;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(229, 107, 154, 0.15);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .dark-theme .counter {
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.08), rgba(139, 52, 70, 0.05));
+            border: 1px solid rgba(229, 107, 154, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .counter:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(229, 107, 154, 0.15);
+            border-color: rgba(229, 107, 154, 0.3);
+        }
+
+        .dark-theme .counter:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .counter-title {
+            font-weight: 600;
+            color: var(--accent-2);
+            margin-bottom: 12px;
+            font-size: 18px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .counter-value {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .counter-label {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Signature section */
+        .sign {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.03), rgba(139, 52, 70, 0.02));
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+            transition: var(--transition);
+        }
+
+        .dark-theme .sign {
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.08), rgba(139, 52, 70, 0.04));
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .sign:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.06), rgba(139, 52, 70, 0.04));
+        }
+
+        .avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            box-shadow: 0 15px 30px rgba(139, 52, 70, 0.25);
+            flex-shrink: 0;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sign-text {
+            flex: 1;
+        }
+
+        .sign-text .signature {
+            font-weight: 600;
+            font-size: 24px;
+            color: var(--accent-2);
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        .sign-text .name {
+            font-weight: 700;
+            color: var(--text);
+            font-size: 18px;
+        }
+
+        .sign-text .heart-icon {
+            color: var(--accent);
+            margin-left: 8px;
+        }
+
+        /* Floating animation */
+        @keyframes floaty {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(3deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        .float {
+            animation: floaty 8s ease-in-out infinite;
+        }
+
+        .float-slow {
+            animation: floaty 12s ease-in-out infinite;
+        }
+
+        /* Additional decorative elements */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            z-index: 1;
+            opacity: 0;
+            animation: sparkle 3s infinite;
+        }
+
+        .dark-theme .sparkle {
+            background: var(--accent-3);
+            box-shadow: 0 0 10px 2px var(--accent-3);
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 122, 182, 0.05);
+            border-radius: 10px;
+        }
+
+        .dark-theme ::-webkit-scrollbar-track {
+            background: rgba(255, 122, 182, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--accent), var(--accent-2));
+            border-radius: 10px;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: rgba(255, 122, 182, 0.3);
+            color: var(--text);
+        }
+
+        /* Footer note */
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Samantha's Favorites Button */
+        .favorites-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 35px;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 15px 30px rgba(139, 52, 70, 0.25);
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .favorites-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(139, 52, 70, 0.35);
+        }
+
+        .favorites-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .favorites-btn i {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .favorites-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .favorites-btn:hover::after {
+            left: 150%;
+        }
+
+        .message-toggle {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0 28px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 14px;
+            color: var(--muted);
+            background: transparent;
+            border: 1px solid transparent;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-btn:hover {
+            color: var(--accent);
+            background: rgba(255, 107, 157, 0.05);
+        }
+
+        .toggle-btn.active {
+            color: white;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .message-panel {
+            display: none;
+        }
+
+        .message-panel.active {
+            display: block;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(20, 10, 15, 0.85), rgba(5, 2, 4, 0.95));
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(229, 107, 154, 0.1);
+            position: relative;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-content::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
+            /* Chrome, Safari and Opera */
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px) scale(0.98);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(229, 107, 154, 0.15);
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .close-modal {
+            background: rgba(229, 107, 154, 0.05);
+            border: 1px solid rgba(229, 107, 154, 0.1);
+            font-size: 20px;
+            color: var(--muted);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: rgba(229, 107, 154, 0.15);
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .favorite-item {
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.03), rgba(139, 52, 70, 0.02));
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(229, 107, 154, 0.1);
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-theme .favorite-item {
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.06), rgba(139, 52, 70, 0.04));
+        }
+
+        .favorite-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(139, 52, 70, 0.15);
+            border-color: rgba(229, 107, 154, 0.3);
+            background: linear-gradient(135deg, rgba(229, 107, 154, 0.06), rgba(139, 52, 70, 0.04));
+        }
+
+        .favorite-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 20px rgba(139, 52, 70, 0.2);
+        }
+
+        .favorite-title {
+            font-weight: 700;
+            color: var(--accent-2);
+            margin-bottom: 10px;
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .dark-theme .favorite-title {
+            color: var(--accent);
+        }
+
+        .favorite-desc {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        /* Color samples for favorite colors */
+        .color-samples {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .color-sample {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .color-sample:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .color-pink {
+            background-color: var(--accent);
+        }
+
+        .color-wine-red {
+            background-color: var(--accent-2);
+        }
+
+        /* Tulip decoration */
+        .tulip-icon {
+            color: var(--accent);
+            font-size: 20px;
+            margin: 0 4px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .favorite-item:hover .tulip-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .special-note {
+            background: linear-gradient(135deg, rgba(20, 10, 15, 0.9), rgba(5, 2, 4, 0.95));
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 35px;
+            border: 1px solid rgba(255, 117, 160, 0.2);
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .special-note:hover {
+            transform: translateY(-3px) scale(1.01);
+            border-color: rgba(255, 117, 160, 0.3);
+        }
+
+        .special-note-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .special-note-header i {
+            font-size: 20px;
+        }
+
+        .special-note p {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text);
+            line-height: 1.8;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .special-note strong {
+            color: var(--accent);
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .dark-theme .special-note strong {
+            color: var(--accent-3);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 30px 25px;
+                border-radius: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                margin-bottom: 30px;
+                padding-right: 20px;
+            }
+
+            .theme-toggle {
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .meta {
+                text-align: left;
+                padding-left: 0;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .sub {
+                font-size: 15px;
+            }
+
+            .content {
+                font-size: 17px;
+                line-height: 1.75;
+            }
+
+            .heart.h1 {
+                width: 120px;
+                right: -50px;
+                top: -40px;
+            }
+
+            .heart.h2 {
+                width: 80px;
+                left: -25px;
+                bottom: -10px;
+            }
+
+            .heart.h3 {
+                width: 100px;
+                right: -30px;
+                bottom: -30px;
+            }
+
+            .ribbon {
+                left: -250px;
+                top: 10px;
+                width: 350px;
+                height: 100px;
+            }
+
+            .avatar {
+                width: 65px;
+                height: 65px;
+                font-size: 26px;
+            }
+
+            .counter-value {
+                font-size: 32px;
+            }
+
+            .sign {
+                margin-top: 35px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                max-height: 90vh;
+            }
+
+            .modal-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+                border-radius: 18px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .avatar {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+
+            .sign {
+                padding: 20px 15px;
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .counter {
+                padding: 20px;
+                margin: 25px 0;
+            }
+
+            .counter-value {
+                font-size: 28px;
+            }
+
+            .favorites-btn {
+                padding: 16px;
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <div class="container" role="main" aria-labelledby="title">
+
+        <!-- Decorative elements -->
+        <div class="ribbon" aria-hidden="true"></div>
+        <div class="paper-dots" aria-hidden="true"></div>
+
+        <!-- Animated hearts -->
+        <svg class="heart h1 float" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+                d="M12 21s-7.5-4.35-9.5-7.25C-1.12 7.95 6.3 2 12 6.5c5.7-4.5 13.12 1.45 9.5 7.25C19.5 16.65 12 21 12 21z" />
+        </svg>
+
+        <svg class="heart h2 float-slow" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+                d="M12 21s-7.5-4.35-9.5-7.25C-1.12 7.95 6.3 2 12 6.5c5.7-4.5 13.12 1.45 9.5 7.25C19.5 16.65 12 21 12 21z" />
+        </svg>
+
+        <svg class="heart h3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+                d="M12 21s-7.5-4.35-9.5-7.25C-1.12 7.95 6.3 2 12 6.5c5.7-4.5 13.12 1.45 9.5 7.25C19.5 16.65 12 21 12 21z" />
+        </svg>
+
+        <!-- Random sparkles -->
+        <div class="sparkle" style="top: 20%; left: 10%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="top: 60%; right: 15%; animation-delay: 1.2s;"></div>
+        <div class="sparkle" style="top: 80%; left: 20%; animation-delay: 2.4s;"></div>
+
+
+        <!-- Anniversary Navigation -->
+        <nav class="anniversary-nav">
+            <a class="nav-link active" data-month="1">1. Month</a>
+            <a class="nav-link" data-month="2">2. Month</a>
+            <a class="nav-link" data-month="3">3. Month</a>
+            <a class="nav-link" data-month="4">4. Month</a>
+            <a class="nav-link" data-month="5">5. Month</a>
+        </nav>
+
+        <div id="section-1" class="anniversary-section active">
+            <!-- Anniversary counter -->
+            <div class="counter">
+                <div class="counter-title">Celebrating</div>
+                <div class="counter-value">1 Month Complete!</div>
+                <div class="counter-label">Today, November 10th, marks our 1st month together ❤️</div>
+            </div>
+
+            <div class="message-toggle">
+                <button class="toggle-btn active" type="button" data-target="my">My Message</button>
+                <button class="toggle-btn" type="button" data-target="her">Her Message</button>
+            </div>
+
+            <header style="margin: 20px 0;">
+                <div class="header-content">
+                    <h1>Happy 1st Month Anniversary</h1>
+                    <div class="sub">The beginning of our forever...</div>
+                </div>
+            </header>
+
+            <div class="message-panel active" data-message="my">
+                <div class="content">
+                    <p>happy 1st monthsary with you my princess, i never believed love again and, that day when i met you, everything changed completely, i met a sweet girl like cares about me always asks my well being and such a pure heart and soul she have. This time was different, yeah i fall in love in every meaning, and every way. Thank you for loving me truly my beautiful girl, even you changed my life, my mind, even me, for us ;)) in another life, in another universe, i will choose you again and again, thank you for being with me sweetheart, when i feel low you making me the happiest boy just with your texts and voice ;33 and yeah i will continue to put an effort in our relationship, for us ;)) I will always love you and a promise, im always gonna be here hm? for you, for us ;3 Iloveyoumore my angel mmmwa mwa mwa mmwaa mwa mwa mmmmmwa mwa mwa mwa mwa mwa mwa mwa mwa mwa mwa MMMWWAAA :3:3333</p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">B</div>
+                        <div class="sign-text">
+                            <div class="signature">Your baby,</div>
+                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-panel" data-message="her">
+                <div class="content">
+                    <p>happy 1st monthsary with you my love, I didn't even realize that loving someone from another country will change my life and I'm glad that I met you that night. you're funny, smart, kind, caring and everything which made me fall in love with you again and again, and jsyk I would always choose to be with you and love you even in another universe. thankyou for always being there for me when I needed someone, thankyou for loving me no matter what the distance is and thankyou for always putting an effort in our rs. I will always love you and I always will and I'm always here for you my baby:3
+Iloveyousomuch mwaa mwaa mwaa mwaa mwaa mwaa mwaa:33</p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">S</div>
+                        <div class="sign-text">
+                            <div class="signature">Your princess,</div>
+                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-note">
+                <div class="special-note-header">
+                    <i class="fas fa-feather-pointed"></i>
+                    <strong>A Special Message</strong>
+                </div>
+                <p><i>Our journey began on this day, and I'll cherish every moment with you forever. ❤️</i></p>
+            </div>
+        </div>
+
+        <div id="section-2" class="anniversary-section">
+            <!-- Anniversary counter -->
+            <div class="counter" id="anniversaryCounter">
+                <div class="counter-title">Celebrating</div>
+                <div class="counter-value">2 Months Complete!</div>
+                <div class="counter-label">Today, December 10th, marks our 2nd month together ❤️</div>
+            </div>
+
+            <div class="message-toggle">
+                <button class="toggle-btn active" type="button" data-target="my">My Message</button>
+                <button class="toggle-btn" type="button" data-target="her">Her Message</button>
+            </div>
+
+            <header style="margin: 20px 0;">
+                <div class="header-content">
+                    <h1>Our 2nd Month Anniversary</h1>
+                    <div class="sub">Where our beautiful journey truly deepened...</div>
+                </div>
+            </header>
+
+            <!-- Main content (Month 2) -->
+            <div class="message-panel active" data-message="my">
+                <div class="content" id="message">
+                    <p><strong>Today, <span class="highlight">December 10th</span>, we celebrate the <span
+                                class="highlight">second month of our relationship</span> being completed!</strong> It still
+                        feels unbelievable, yet everything is real and having you in my life makes this world so much more
+                        livable ;3</p>
+
+                    <p>I believe my prayers will be answered one day, and I promise that I'll be able to hug you in real
+                        life
+                        and shower you with kisses.</p>
+
+                    <p>I want to thank you, but a simple "thank you" could never be enough, because you've changed my life
+                        so
+                        deeply, my love. You erased all the bad things about me and it all happened in such a short time. I
+                        don't even know how you did it, but there's one thing I know for sure: <strong>I am deeply, madly in
+                            love with you.</strong></p>
+
+                    <p>I love you so much that sometimes I can't put it into words and I just cry. They aren't tears of
+                        sadness,
+                        those tears are reflections of my love for you. I wish you could see yourself through my eyes... You
+                        are
+                        my angel.</p>
+
+                    <p>I love you so, so much, and sometimes I think about it and feel nothing but gratitude. I'm so glad I
+                        reached out to you that day while we were playing a game ;3</p>
+
+                    <p>You are the most precious thing in my life, Samantha. At the same time, you're the most beautiful,
+                        cutest, sexiest, and most perfect thing to me.</p>
+
+                    <p>I'm grateful that you love me honestly, without lies, thank you so much for that. Never think that I
+                        would leave you, okay? I'm here to stay, and I hope our relationship lasts all the way to marriage
+                        ;33
+                    </p>
+
+                    <p>I love you so much, Samantha. I really love your name, but not just your name, everything about you.
+                        I'm
+                        crazily in love with you, especially with your pure heart. You never failed to make me smile ;3</p>
+
+                    <p>I'm so proud of you, my sweetheart. Keep going just like this, and I'll always be your supporter.
+                        I'll
+                        always have your back and continue to encourage you. Who knows, maybe one day I'll somehow send you
+                        a
+                        bouquet of tulips <i class="fas fa-spa tulip-icon"></i> ;33 and gifts in your favorite colors.</p>
+
+                    <p><strong>Always remember this:</strong> I'm always here. I'm with you, and I'll keep standing by your
+                        side. I love you so much, Samantha.</p>
+
+                    <p><strong>Happy 2-month anniversary, my love! Here's to many more months and years together!
+                            💖</strong>
+                    </p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">B</div>
+                        <div class="sign-text">
+                            <div class="signature">Your baby,</div>
+                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="message-panel" data-message="her">
+                <div class="content"></div>
+            </div>
+        </div>
+
+        <!-- Month 3 -->
+        <div id="section-3" class="anniversary-section">
+            <!-- Anniversary counter -->
+            <div class="counter">
+                <div class="counter-title">Celebrating</div>
+                <div class="counter-value">3 Months Complete!</div>
+                <div class="counter-label">Today, January 10th, marks our 3rd month journey ❤️</div>
+            </div>
+
+            <div class="message-toggle">
+                <button class="toggle-btn active" type="button" data-target="my">My Message</button>
+                <button class="toggle-btn" type="button" data-target="her">Her Message</button>
+            </div>
+
+            <header style="margin: 20px 0;">
+                <div class="header-content">
+                    <h1>Three Months, One Heart</h1>
+                    <div class="sub">Three whole months of us, still standing side by side...</div>
+                </div>
+            </header>
+
+            <div class="message-panel active" data-message="my">
+                <div class="content">
+                    <p>Wow… three whole months. It's hard to believe how fast time has passed, almost like it was only three weeks ago.</p>
+
+                    <p>Hello my beautiful Samantha, happy 3rd month anniversary, my love. From the very beginning of this journey, we have walked through so many challenges together. There were moments of misunderstanding, moments of silence, and moments of painful arguments but despite everything, <span class="highlight">we never let go of each other.</span> And here we are now, still standing side by side, stronger than yesterday, closer than ever ;3</p>
+
+                    <p>In a world that can feel cruel, tiring, and unfair, having you in my life changed everything. You brought <span class="highlight">color into places that once felt empty and lifeless.</span> The day I fell in love with you, I felt something I had never felt before. You gave me a beautiful energy to live, to hope, to smile again. Little by little, without me even realizing it, I learned how deeply I was falling in love with you.</p>
+
+                    <p>With you, even the hardest days feel softer. Your presence makes my heart feel safe, and your love reminds me why life is still worth believing in. Every laugh we share, every tear we survive together, and every moment we choose each other brings me closer to the future I dream of with you by your side.</p>
+
+                    <p>And now, we've reached our third month together. It may only be three months, but to me, it feels like the beginning of a lifetime. I want to keep writing memories with you, keep growing with you, and one day look back at these words and smile maybe even share them with our future together.</p>
+
+                    <p>I love you more than words can truly explain Samantha, <span class="highlight">Always ;3</span></p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">B</div>
+                        <div class="sign-text">
+                            <div class="signature">Your baby,</div>
+                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-panel" data-message="her">
+                <div class="content">
+                    <p>happy 3rd monthsary baby, I couldn't believe this was happening after arguments and stuff but we still managed to fix it without leaving. I know I did hurt you and I also know I was wrong but it's not too late to change right? when I figured it out I'll be the best gf for you and I'm sorry if I cant rn because of my stupid attachment but just so you know I didn't stop trying my best and I'm still trying, thankyou for 3months of loving me and I hope you and I will love each other more than just a 3months and I'm happy to be stuck with you my love, seni seviyorum canim!  ˗ˋˏ ♡ ˎˊ˗</p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">S</div>
+                        <div class="sign-text">
+                            <div class="signature">Your princess,</div>
+                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-note">
+                <div class="special-note-header">
+                    <i class="fas fa-feather-pointed"></i>
+                    <strong>A Special Message</strong>
+                </div>
+                <p><i>Every month with you is a new chapter of the best book I've ever read. 🌸</i></p>
+            </div>
+        </div>
+
+        <!-- Month 4 -->
+        <div id="section-4" class="anniversary-section">
+            <!-- Anniversary counter -->
+            <div class="counter">
+                <div class="counter-title">Celebrating</div>
+                <div class="counter-value">4 Months Complete!</div>
+                <div class="counter-label">Today, February 10th, marks our 4th month together ❤️</div>
+            </div>
+
+            <div class="message-toggle">
+                <button class="toggle-btn active" type="button" data-target="my">My Message</button>
+                <button class="toggle-btn" type="button" data-target="her">Her Message</button>
+            </div>
+
+            <header style="margin: 20px 0;">
+                <div class="header-content">
+                    <h1>Happy 4th Month, My Love</h1>
+                    <div class="sub">Four months of love, laughter, and endless gratitude...</div>
+                </div>
+            </header>
+
+            <div class="message-panel active" data-message="my">
+                <div class="content">
+                    <p>Hello, mahal ko</p>
+
+                    <p>Alam kong napaka-busy mo ngayon, pero sana magawa kitang halikan sa pisngi nang paulit-ulit para mapakalma ka. Pero gusto kong malaman mo na palagi akong nandito para sa'yo, Samantha. Kahit may screen lang sa pagitan natin, wala itong binabago dahil sa kabilang dulo nito nandoon ang prinsesa ko ;3</p>
+
+                    <p>Gusto kong pasalamatan ang pamilya mo, dahil pinalaki nila at dinala sa mundong ito ang isang taong may napakagandang puso at napakaperpekto tulad mo. Alam kong napakalayo ng distansya sa pagitan natin at minsan naaapektuhan tayo nito, pero tandaan mo mahal ko, ang pagmamahal ko sa'yo ay hinding-hindi magbabago o mababawasan. Oo, malayo tayo sa isa't isa, pero ang distansya ay ginawa para malampasan ;3</p>
+
+                    <p>Ikaw ang pinakamahalaga at pinakamagandang bagay sa buhay ko, Samantha. Mahal na mahal kita minsan kulang ang mga salita para ipaliwanag kung gaano kita kamahal. Bawat larawan mo, ang ningning at linis ng iyong mga mata, ang kadalisayan at ganda ng iyong kaluluwa… perpektong tao ka, Samantha, at ipinagmamalaki kita ;3</p>
+
+                    <p>Ipaabot mo ang napakaraming pagbati ko sa pamilya mo.</p>
+
+                    <p>At may sasabihin ako kay Coleen. Coleen, maaari mo bang yakapin nang mahigpit ang ate mo para sa akin? ;33</p>
+
+                    <p>Mahal ko kayong lahat, lalo na ikaw Samantha :3</p>
+
+                    <p><strong>SOBRANG IN LOVE AKO SA'YO, AT SANA BALANG ARAW MAIPAKITA KO ITO SA PAMAMAGITAN NG MAHIGPIT NA YAKAP AT MARAMING HALIK :33</strong></p>
+
+                    <p><strong>Maligayang ika 4 na buwan natin, asawa ko ;3 💍💖</strong></p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">B</div>
+                        <div class="sign-text">
+                            <div class="signature">Your baby,</div>
+                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-panel" data-message="her">
+                <div class="content">
+                    <p>happy 4th monthsary baby! ⋆. 𐙚 ˚</p>
+
+                    <p>first I wanna apologize because these fast few weeks I've been busy a lot these days because of my school stuff that I need to put first and do. It was hard for me to make a time for you and give you assurance when you needed while I'm busy with my stuff and to give you update that you needed, tbh it was hard for me but I still managed to do it because I love you and I wanted to make an effort even just small updates would do. I also wanted to apologize for the things I've did in the past and also to now I'm sorry for forgetting about our 4th monthsary, jsyk I didn't actually forgot it on purpose I forgot it because I was been busy doing the things I need to do for school and how to manage everything and also I wanted to apologize for the " simping on toji " actually I wasn't simping I was just like that when the character I idolize become like yk called " simping " calling him daddy was my fault and yeah he is fine but it's just an anime character and I know he wouldn't become a real person. yes i know I'm simping over sum anime that I love the most but at least I'm not simping for someone in real life my love, it's better than to "simp" or idolize anime instead of a real one. and I wanted to say that thankyou for understanding me even tho I'm always busy these fast few weeks since of my school stuff but you still find a way to understand me and be easy on me because you know how stress and mentally drained I am, I am thankful that I found my own version who understands me take care of me through screen, and love me the way how I love someone. I may be a bitch sometimes to you but I love you with all my hearts baby and I forgot our age gap because that doesn't matter if I love someone, I will love when I want to love and that's all that matters to me and you all that matters to me. thankyou for everything my baby and I'm sorry for everything, seni seviyorum canim !  𓇬⋆ ﾟ꩜‧˚𑁍ܓ "</p>
+
+                    <!-- Signature -->
+                    <div class="sign">
+                        <div class="avatar">S</div>
+                        <div class="sign-text">
+                            <div class="signature">Your princess,</div>
+                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="special-note">
+                <div class="special-note-header">
+                    <i class="fas fa-feather-pointed"></i>
+                    <strong>A Special Message</strong>
+                </div>
+                <p><i>Four months down, forever to go. Mahal kita, always and forever. ❤️</i></p>
+            </div>
+        </div>
+
+        <!-- Month 5 (Placeholder) -->
+        <div id="section-5" class="anniversary-section">
+            <!-- Anniversary counter -->
+            <div class="counter">
+                <div class="counter-title">Reserved</div>
+                <div class="counter-value">Month 5</div>
+                <div class="counter-label">Our story continues...</div>
+            </div>
+
+            <div class="message-toggle">
+                <button class="toggle-btn active" type="button" data-target="my">My Message</button>
+                <button class="toggle-btn" type="button" data-target="her">Her Message</button>
+            </div>
+
+            <header style="margin: 20px 0;">
+                <div class="header-content">
+                    <h1>Towards the 5th Month</h1>
+                    <div class="sub">Every moment counts when I'm with you.</div>
+                </div>
+            </header>
+
+            <div class="message-panel active" data-message="my">
+                <div class="content"></div>
+            </div>
+
+            <div class="message-panel" data-message="her">
+                <div class="content"></div>
+            </div>
+
+            <div class="special-note">
+                <div class="special-note-header">
+                    <i class="fas fa-feather-pointed"></i>
+                    <strong>A Special Message</strong>
+                </div>
+                <p><i>I'll always be here to record our love, month by month, forever. ❤️</i></p>
+            </div>
+        </div>
+
+        <!-- Samantha's Favorites Button (Global) -->
+        <button class="favorites-btn" id="favoritesBtn" style="margin-top: 40px;">
+            <i class="fas fa-heart"></i> Samantha's Favorites
+        </button>
+
+        <!-- Footer note (Global) -->
+        <div class="footer-note">
+            This digital note was created with love and will be saved in our memories forever.<br>
+            <strong>Created on:</strong> December 10, 2025
+        </div>
+    </div>
+
+    <!-- Modal for Samantha's Favorites (Global) -->
+    <div class="modal" id="favoritesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Samantha's Favorites 💖</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Food</div>
+                    <div class="favorite-desc">
+                        <strong>Carbonara!</strong> The creamy pasta with pancetta and parmesan that she absolutely
+                        loves. I promise to make it for her one day! 🍝
+                    </div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Colors</div>
+                    <div class="favorite-desc">
+                        <strong>Pink and Wine Red</strong> - just like her personality: sweet and passionate.
+                        <div class="color-samples">
+                            <div class="color-sample color-pink" title="Pink"></div>
+                            <div class="color-sample color-wine-red" title="Wine Red"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Flower</div>
+                    <div class="favorite-desc">
+                        <strong>Tulips <i class="fas fa-spa tulip-icon"></i></strong> - especially pink ones! They're
+                        elegant, beautiful, and delicate just like her. I dream of giving her a whole field of
+                        tulips.
+                    </div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Music</div>
+                    <div class="favorite-desc">One of the most special songs for us is <strong>"Iris" by Goo Goo
+                            Dolls</strong>, especially the line: "You're the closest to heaven that I'll ever be, and I
+                        don't wanna go home right now." This song holds a deep meaning in our love story.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Games</div>
+                    <div class="favorite-desc"><strong>Roblox</strong> and <strong>Mobile Legends</strong> – the games
+                        we love playing together and where we share so many fun memories.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Movies</div>
+                    <div class="favorite-desc">She absolutely loves sad movies that teach deep life lessons, especially
+                        when they are about love, broken hearts, and healing. Those stories touch her soul in a special
+                        way, and I dream of holding her close while we watch them together.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="favorite-title">Favorite Activities</div>
+                    <div class="favorite-desc">She loves listening to music and going out for walks, and she has a
+                        special interest in guitars. I adore this so much, because one day I will listen to a song she
+                        sings with her beautiful voice.</div>
+                </div>
+
+                <div class="favorite-item">
+                    <div class="favorite-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="favorite-title">My Favorite Things</div>
+                    <div class="favorite-desc">Everything about her.</div>
+                </div>
+            </div>
+
+            <div class="special-note">
+                <div class="special-note-header">
+                    <i class="fas fa-feather-pointed"></i>
+                    <strong>A Special Message</strong>
+                </div>
+                <p>I remember every detail about your favorites because every part of you is special to me. One day,
+                    I'll
+                    cook you carbonara, bring you pink tulips <span class="tulip-emoji">🌸</span>, and decorate
+                    everything in pink and wine red just for you! :333</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Interactive functionality for the anniversary counter
+        document.addEventListener('DOMContentLoaded', function () {
+            // Section switching functionality
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.anniversary-section');
+            const nav = document.querySelector('.anniversary-nav');
+
+            // Ensure nav starts from the beginning (Month 1 visible)
+            if (nav) nav.scrollLeft = 0;
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const month = link.getAttribute('data-month');
+
+                    // Update nav state
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Update section state
+                    sections.forEach(s => s.classList.remove('active'));
+                    const activeSection = document.getElementById(`section-${month}`);
+                    activeSection.classList.add('active');
+
+                    // Reset message toggle state for the newly active month
+                    const toggle = activeSection.querySelector('.message-toggle');
+                    if (toggle) {
+                        toggle.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                        const myBtn = toggle.querySelector('.toggle-btn[data-target="my"]');
+                        if (myBtn) myBtn.classList.add('active');
+                    }
+                    activeSection.querySelectorAll('.message-panel').forEach(panel => {
+                        panel.classList.toggle('active', panel.getAttribute('data-message') === 'my');
+                    });
+
+                    // Scroll to top of section with smooth effect
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Anniversary Counter Message Logic
+            const counter = document.getElementById('anniversaryCounter');
+
+            if (counter) counter.addEventListener('click', function () {
+                const messages = [
+                    "Happy 2-month anniversary, my love! 💖",
+                    "60 amazing days with you 🥂",
+                    "Every day with you is a blessing 💕",
+                    "Here's to many more months together ✨",
+                    "I cherish every moment with you 💝",
+                    "You make time fly when I'm with you ⏳",
+                    "The best 2 months of my life 🌟",
+                    "My love for you grows every day 🌱",
+                    "You're my favorite hello and hardest goodbye 👋",
+                    "2 months down, forever to go! 💑"
+                ];
+
+                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+                // Create a simple floating message
+                const message = document.createElement('div');
+                message.textContent = randomMsg;
+                message.style.cssText = `
+          position: fixed;
+          bottom: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--card);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          color: var(--text);
+          padding: 16px 30px;
+          border-radius: 16px;
+          font-weight: 600;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+          border: 1px solid rgba(229, 107, 154, 0.2);
+          border-left: 4px solid var(--accent);
+          z-index: 10000;
+          animation: slideInOut 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          text-align: center;
+          max-width: 90%;
+        `;
+
+                // Add keyframes for animation
+                if (!document.getElementById('toast-style')) {
+                    const styleSheet = document.createElement('style');
+                    styleSheet.id = 'toast-style';
+                    styleSheet.textContent = `
+          @keyframes slideInOut {
+            0% { opacity: 0; transform: translate(-50%, 20px); }
+            10% { opacity: 1; transform: translate(-50%, 0); }
+            90% { opacity: 1; transform: translate(-50%, 0); }
+            100% { opacity: 0; transform: translate(-50%, -20px); }
+          }
+        `;
+                    document.head.appendChild(styleSheet);
+                }
+
+                document.body.appendChild(message);
+
+                // Remove message after animation
+                setTimeout(() => {
+                    if (message.parentNode) {
+                        document.body.removeChild(message);
+                    }
+                }, 3500);
+            });
+
+            // My Message / Her Message toggle per month
+            document.addEventListener('click', function (e) {
+                const btn = e.target.closest('.toggle-btn');
+                if (!btn) return;
+
+                const section = btn.closest('.anniversary-section');
+                if (!section) return;
+
+                const toggle = btn.closest('.message-toggle');
+                if (!toggle) return;
+
+                const target = btn.getAttribute('data-target');
+                if (!target) return;
+
+                toggle.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                section.querySelectorAll('.message-panel').forEach(panel => {
+                    panel.classList.toggle('active', panel.getAttribute('data-message') === target);
+                });
+            });
+
+            // Add subtle hover effect to highlighted text
+            const highlights = document.querySelectorAll('.highlight');
+            highlights.forEach(highlight => {
+                highlight.addEventListener('mouseenter', function () {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.transition = 'transform 0.2s ease';
+                });
+
+                highlight.addEventListener('mouseleave', function () {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            // Samantha's Favorites modal functionality
+            const favoritesBtn = document.getElementById('favoritesBtn');
+            const favoritesModal = document.getElementById('favoritesModal');
+            const closeModal = document.getElementById('closeModal');
+
+            // Open modal
+            favoritesBtn.addEventListener('click', function () {
+                favoritesModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', function () {
+                favoritesModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close modal when clicking outside
+            favoritesModal.addEventListener('click', function (e) {
+                if (e.target === favoritesModal) {
+                    favoritesModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && favoritesModal.style.display === 'flex') {
+                    favoritesModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Add tulip emojis to favorite items
+            const tulipIcons = document.querySelectorAll('.tulip-icon');
+            tulipIcons.forEach(icon => {
+                icon.innerHTML = '🌸';
+            });
+        });
+    </script>
+</body>
+
+</html>
