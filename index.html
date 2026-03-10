@@ -19,19 +19,19 @@
             --bg2: #0a0406;
             --bg3: #080305;
             --card: rgba(10, 5, 8, 0.5);
-            --card-border: rgba(255, 117, 160, 0.1);
+            --card-border: rgba(255, 255, 255, 0.1);
             --text: #ffffff;
-            --muted: #8f7480;
+            --muted: #a0a0a0;
             --shadow: rgba(0, 0, 0, 0.7);
             --shadow-strong: rgba(0, 0, 0, 0.9);
 
-            /* Refined Luxury accent colors */
-            --accent: #ff6b9d;
-            --accent-2: #c42b4d;
-            --accent-3: #e88bac;
-            --pink: #ff6b9d;
-            --wine-red: #c42b4d;
-            --gold: #d4af37;
+            /* Black & White accent colors */
+            --accent: #ffffff;
+            --accent-2: #888888;
+            --accent-3: #cccccc;
+            --pink: #ffffff;
+            --wine-red: #666666;
+            --gold: #d4d4d4;
             --radius: 28px;
             --transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -53,14 +53,14 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+            background: linear-gradient(to bottom, var(--accent-2), var(--wine-red));
             border-radius: 20px;
             border: 2px solid transparent;
             background-clip: content-box;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(to bottom, var(--accent-3), var(--accent));
+            background: linear-gradient(to bottom, var(--accent-3), var(--accent-2));
             background-clip: content-box;
         }
 
@@ -76,7 +76,8 @@
 
         body {
             font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-            background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
+            background: url('assets/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text);
             min-height: 100vh;
             display: flex;
@@ -101,21 +102,16 @@
         .container {
             width: 100%;
             max-width: 850px;
-            background: linear-gradient(135deg, rgba(20, 10, 15, 0.8) 0%, rgba(5, 2, 4, 0.9) 100%);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: var(--radius);
             padding: 50px 60px;
-            border: 1px solid var(--card-border);
-            border-top: 1px solid rgba(255, 107, 157, 0.2);
-            border-left: 1px solid rgba(255, 107, 157, 0.1);
-            box-shadow: 0 40px 80px var(--shadow),
-                0 20px 40px var(--shadow-strong),
-                inset 0 1px 0 rgba(255, 107, 157, 0.05);
+            border: none;
             position: relative;
             z-index: 10;
             overflow: hidden;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         /* Anniversary Navigation */
@@ -127,7 +123,7 @@
             padding: 8px;
             background: rgba(255, 255, 255, 0.02);
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: none;
             position: relative;
             z-index: 20;
             overflow-x: auto;
@@ -137,6 +133,7 @@
 
         .anniversary-nav::-webkit-scrollbar {
             display: none;
+            border: none;
         }
 
         .nav-link {
@@ -148,7 +145,6 @@
             font-size: 14px;
             transition: var(--transition);
             cursor: pointer;
-            border: 1px solid transparent;
             white-space: nowrap;
             min-width: 92px;
             text-align: center;
@@ -158,18 +154,18 @@
 
         .nav-link:hover {
             color: var(--accent);
-            background: rgba(255, 107, 157, 0.05);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .nav-link.active {
             color: white;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #333333;
+            box-shadow: none;
+            border: none;
         }
 
         .nav-link:focus-visible {
-            box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.25), 0 8px 20px rgba(255, 107, 157, 0.25);
+            box-shadow: none;
         }
 
         @media (max-width: 768px) {
@@ -193,6 +189,7 @@
 
         .anniversary-section.active {
             display: block;
+            border: none;
         }
 
         @keyframes sectionFade {
@@ -208,10 +205,7 @@
         }
 
         .container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 50px 100px var(--shadow),
-                0 30px 60px var(--shadow-strong),
-                inset 0 1px 0 rgba(255, 107, 157, 0.08);
+            transform: none;
         }
 
         /* Theme toggle button */
@@ -222,21 +216,21 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            background: #333333;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             cursor: pointer;
             border: none;
-            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+            box-shadow: none;
             z-index: 10;
             transition: var(--transition);
         }
 
         .theme-toggle:hover {
             transform: scale(1.1) rotate(30deg);
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+            box-shadow: none;
         }
 
         .theme-toggle i {
@@ -245,6 +239,7 @@
 
         /* Enhanced decorative elements */
         .heart {
+            display: none !important;
             position: absolute;
             opacity: 0.18;
             filter: blur(0.2px);
@@ -375,54 +370,36 @@
         }
 
         .highlight {
-            color: var(--accent-2);
+            color: white;
             font-weight: 600;
             position: relative;
             display: inline-block;
             transition: color 0.3s ease;
         }
 
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            opacity: 0.3;
-            border-radius: 2px;
-        }
-
         /* Anniversary counter */
         .counter {
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.05), rgba(139, 52, 70, 0.03));
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
             padding: 30px;
             margin: 35px 0;
             text-align: center;
             position: relative;
             z-index: 2;
-            border: 1px solid rgba(229, 107, 154, 0.15);
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            border-radius: 20px;
         }
 
         .dark-theme .counter {
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.08), rgba(139, 52, 70, 0.05));
-            border: 1px solid rgba(229, 107, 154, 0.15);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .counter:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(229, 107, 154, 0.15);
-            border-color: rgba(229, 107, 154, 0.3);
+            transform: none;
         }
 
         .dark-theme .counter:hover {
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: none;
         }
 
         .counter-title {
@@ -458,28 +435,25 @@
             align-items: center;
             gap: 24px;
             padding: 25px;
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.03), rgba(139, 52, 70, 0.02));
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
-            border-left: 4px solid var(--accent);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
             transition: var(--transition);
         }
 
         .dark-theme .sign {
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.08), rgba(139, 52, 70, 0.04));
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .sign:hover {
-            transform: translateX(5px);
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.06), rgba(139, 52, 70, 0.04));
+            transform: none;
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .avatar {
             width: 75px;
             height: 75px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            background: #333333;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -487,9 +461,7 @@
             font-weight: 700;
             font-family: 'Playfair Display', serif;
             font-size: 32px;
-            box-shadow: 0 15px 30px rgba(139, 52, 70, 0.25);
             flex-shrink: 0;
-            border: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         .sign-text {
@@ -540,6 +512,7 @@
 
         /* Additional decorative elements */
         .sparkle {
+            display: none !important;
             position: absolute;
             width: 6px;
             height: 6px;
@@ -585,25 +558,35 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--accent), var(--accent-2));
+            background: #333333;
             border-radius: 10px;
         }
 
         /* Selection color */
         ::selection {
-            background: rgba(255, 122, 182, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             color: var(--text);
         }
 
         /* Footer note */
         .footer-note {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
+            padding: 20px 30px;
             color: var(--muted);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             position: relative;
             z-index: 2;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-note strong {
+            color: var(--accent);
+            font-weight: 600;
         }
 
         /* Samantha's Favorites Button */
@@ -614,24 +597,23 @@
             width: 100%;
             margin-top: 35px;
             padding: 18px 24px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            background: #333333;
             color: white;
-            border: none;
             border-radius: 16px;
             font-size: 18px;
             font-weight: 600;
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 15px 30px rgba(139, 52, 70, 0.25);
             position: relative;
             overflow: hidden;
             z-index: 2;
+            border: none;
+            outline: none;
         }
 
         .favorites-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(139, 52, 70, 0.35);
+            transform: none;
         }
 
         .favorites-btn:active {
@@ -666,7 +648,6 @@
             padding: 8px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             z-index: 2;
         }
@@ -677,24 +658,24 @@
             border-radius: 14px;
             color: var(--muted);
             background: transparent;
-            border: 1px solid transparent;
             font-weight: 700;
             font-size: 14px;
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: var(--transition);
+            border: none;
         }
 
         .toggle-btn:hover {
             color: var(--accent);
-            background: rgba(255, 107, 157, 0.05);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .toggle-btn.active {
             color: white;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #333333;
+            box-shadow: none;
+            border: none;
         }
 
         .message-panel {
@@ -732,9 +713,9 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, rgba(20, 10, 15, 0.85), rgba(5, 2, 4, 0.95));
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: var(--radius);
             width: 100%;
             max-width: 700px;
@@ -745,8 +726,6 @@
             -ms-overflow-style: none;
             /* IE and Edge */
             padding: 40px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(229, 107, 154, 0.1);
             position: relative;
             animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -777,7 +756,7 @@
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(229, 107, 154, 0.15);
+            border-bottom: none;
         }
 
         .modal-title {
@@ -791,7 +770,7 @@
 
         .close-modal {
             background: rgba(229, 107, 154, 0.05);
-            border: 1px solid rgba(229, 107, 154, 0.1);
+            border: none;
             font-size: 20px;
             color: var(--muted);
             cursor: pointer;
@@ -818,39 +797,33 @@
         }
 
         .favorite-item {
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.03), rgba(139, 52, 70, 0.02));
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             padding: 24px;
-            border: 1px solid rgba(229, 107, 154, 0.1);
             transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
             display: flex;
             flex-direction: column;
         }
 
         .dark-theme .favorite-item {
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.06), rgba(139, 52, 70, 0.04));
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .favorite-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(139, 52, 70, 0.15);
-            border-color: rgba(229, 107, 154, 0.3);
-            background: linear-gradient(135deg, rgba(229, 107, 154, 0.06), rgba(139, 52, 70, 0.04));
+            transform: none;
         }
 
         .favorite-icon {
             width: 56px;
             height: 56px;
             border-radius: 14px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            background: #333333;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 18px;
             color: white;
             font-size: 24px;
-            box-shadow: 0 10px 20px rgba(139, 52, 70, 0.2);
         }
 
         .favorite-title {
@@ -883,8 +856,8 @@
             width: 36px;
             height: 36px;
             border-radius: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border: none;
+            box-shadow: none;
             transition: transform 0.3s ease;
         }
 
@@ -893,11 +866,11 @@
         }
 
         .color-pink {
-            background-color: var(--accent);
+            background-color: #ff6b9d;
         }
 
         .color-wine-red {
-            background-color: var(--accent-2);
+            background-color: #c42b4d;
         }
 
         /* Tulip decoration */
@@ -914,21 +887,17 @@
         }
 
         .special-note {
-            background: linear-gradient(135deg, rgba(20, 10, 15, 0.9), rgba(5, 2, 4, 0.95));
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 30px;
             margin-top: 35px;
-            border: 1px solid rgba(255, 117, 160, 0.2);
-            border-left: 5px solid var(--accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
             position: relative;
             overflow: hidden;
             transition: var(--transition);
         }
 
         .special-note:hover {
-            transform: translateY(-3px) scale(1.01);
-            border-color: rgba(255, 117, 160, 0.3);
+            transform: none;
         }
 
         .special-note-header {
@@ -1145,10 +1114,10 @@
 
         <div id="section-1" class="anniversary-section active">
             <!-- Anniversary counter -->
-            <div class="counter">
+            <div class="counter" id="anniversaryCounter-1">
                 <div class="counter-title">Celebrating</div>
                 <div class="counter-value">1 Month Complete!</div>
-                <div class="counter-label">Today, November 10th, marks our 1st month together ❤️</div>
+                <div class="counter-label">Today, November 10th, marks our 1st month together <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></div>
             </div>
 
             <div class="message-toggle">
@@ -1172,7 +1141,7 @@
                         <div class="avatar">B</div>
                         <div class="sign-text">
                             <div class="signature">Your baby,</div>
-                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                            <div class="name">Baran <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -1188,7 +1157,7 @@ Iloveyousomuch mwaa mwaa mwaa mwaa mwaa mwaa mwaa:33</p>
                         <div class="avatar">S</div>
                         <div class="sign-text">
                             <div class="signature">Your princess,</div>
-                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                            <div class="name">Samantha <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -1199,7 +1168,7 @@ Iloveyousomuch mwaa mwaa mwaa mwaa mwaa mwaa mwaa:33</p>
                     <i class="fas fa-feather-pointed"></i>
                     <strong>A Special Message</strong>
                 </div>
-                <p><i>Our journey began on this day, and I'll cherish every moment with you forever. ❤️</i></p>
+                <p><i>Our journey began on this day, and I'll cherish every moment with you forever. <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></i></p>
             </div>
         </div>
 
@@ -1208,7 +1177,7 @@ Iloveyousomuch mwaa mwaa mwaa mwaa mwaa mwaa mwaa:33</p>
             <div class="counter" id="anniversaryCounter">
                 <div class="counter-title">Celebrating</div>
                 <div class="counter-value">2 Months Complete!</div>
-                <div class="counter-label">Today, December 10th, marks our 2nd month together ❤️</div>
+                <div class="counter-label">Today, December 10th, marks our 2nd month together <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></div>
             </div>
 
             <div class="message-toggle">
@@ -1272,7 +1241,7 @@ Iloveyousomuch mwaa mwaa mwaa mwaa mwaa mwaa mwaa:33</p>
                         side. I love you so much, Samantha.</p>
 
                     <p><strong>Happy 2-month anniversary, my love! Here's to many more months and years together!
-                            💖</strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></strong>
                     </p>
 
                     <!-- Signature -->
@@ -1280,7 +1249,7 @@ Iloveyousomuch mwaa mwaa mwaa mwaa mwaa mwaa mwaa:33</p>
                         <div class="avatar">B</div>
                         <div class="sign-text">
                             <div class="signature">Your baby,</div>
-                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                            <div class="name">Baran <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
 
@@ -1296,20 +1265,28 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                         <div class="avatar">S</div>
                         <div class="sign-text">
                             <div class="signature">Your princess,</div>
-                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                            <div class="name">Samantha <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="special-note">
+                <div class="special-note-header">
+                    <i class="fas fa-feather-pointed"></i>
+                    <strong>A Special Message</strong>
+                </div>
+                <p><i>Two months down, forever to go. Every day with you is a blessing! <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></i></p>
             </div>
         </div>
 
         <!-- Month 3 -->
         <div id="section-3" class="anniversary-section">
             <!-- Anniversary counter -->
-            <div class="counter">
+            <div class="counter" id="anniversaryCounter-3">
                 <div class="counter-title">Celebrating</div>
                 <div class="counter-value">3 Months Complete!</div>
-                <div class="counter-label">Today, January 10th, marks our 3rd month journey ❤️</div>
+                <div class="counter-label">Today, January 10th, marks our 3rd month journey <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></div>
             </div>
 
             <div class="message-toggle">
@@ -1343,7 +1320,7 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                         <div class="avatar">B</div>
                         <div class="sign-text">
                             <div class="signature">Your baby,</div>
-                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                            <div class="name">Baran <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -1358,7 +1335,7 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                         <div class="avatar">S</div>
                         <div class="sign-text">
                             <div class="signature">Your princess,</div>
-                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                            <div class="name">Samantha <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -1369,17 +1346,17 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                     <i class="fas fa-feather-pointed"></i>
                     <strong>A Special Message</strong>
                 </div>
-                <p><i>Every month with you is a new chapter of the best book I've ever read. 🌸</i></p>
+                <p><i>Every month with you is a new chapter of the best book I've ever read.</i></p>
             </div>
         </div>
 
         <!-- Month 4 -->
         <div id="section-4" class="anniversary-section">
             <!-- Anniversary counter -->
-            <div class="counter">
+            <div class="counter" id="anniversaryCounter-4">
                 <div class="counter-title">Celebrating</div>
                 <div class="counter-value">4 Months Complete!</div>
-                <div class="counter-label">Today, February 10th, marks our 4th month together ❤️</div>
+                <div class="counter-label">Today, February 10th, marks our 4th month together <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></div>
             </div>
 
             <div class="message-toggle">
@@ -1412,14 +1389,14 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
 
                     <p><strong>SOBRANG IN LOVE AKO SA'YO, AT SANA BALANG ARAW MAIPAKITA KO ITO SA PAMAMAGITAN NG MAHIGPIT NA YAKAP AT MARAMING HALIK :33</strong></p>
 
-                    <p><strong>Maligayang ika 4 na buwan natin, asawa ko ;3 💍💖</strong></p>
+                    <p><strong>Maligayang ika 4 na buwan natin, asawa ko ;3 💍<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></strong></p>
 
                     <!-- Signature -->
                     <div class="sign">
                         <div class="avatar">B</div>
                         <div class="sign-text">
                             <div class="signature">Your baby,</div>
-                            <div class="name">Baran <span class="heart-icon">❤️</span></div>
+                            <div class="name">Baran <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -1436,7 +1413,7 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                         <div class="avatar">S</div>
                         <div class="sign-text">
                             <div class="signature">Your princess,</div>
-                            <div class="name">Samantha <span class="heart-icon">❤️</span></div>
+                            <div class="name">Samantha <span class="heart-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></span></div>
                         </div>
                     </div>
                 </div>
@@ -1447,14 +1424,14 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                     <i class="fas fa-feather-pointed"></i>
                     <strong>A Special Message</strong>
                 </div>
-                <p><i>Four months down, forever to go. Mahal kita, always and forever. ❤️</i></p>
+                <p><i>Four months down, forever to go. Mahal kita, always and forever. <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></i></p>
             </div>
         </div>
 
         <!-- Month 5 (Placeholder) -->
         <div id="section-5" class="anniversary-section">
             <!-- Anniversary counter -->
-            <div class="counter">
+            <div class="counter" id="anniversaryCounter-5">
                 <div class="counter-title">Reserved</div>
                 <div class="counter-value">Month 5</div>
                 <div class="counter-label">Our story continues...</div>
@@ -1485,7 +1462,7 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                     <i class="fas fa-feather-pointed"></i>
                     <strong>A Special Message</strong>
                 </div>
-                <p><i>I'll always be here to record our love, month by month, forever. ❤️</i></p>
+                <p><i>I'll always be here to record our love, month by month, forever. <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></i></p>
             </div>
         </div>
 
@@ -1496,8 +1473,20 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
 
         <!-- Footer note (Global) -->
         <div class="footer-note">
-            This digital note was created with love and will be saved in our memories forever.<br>
-            <strong>Created on:</strong> December 10, 2025
+            <div style="font-size: 12px; opacity: 0.7; margin-bottom: 8px;">┌─────────────────────────────────────────────────────────┐</div>
+            <div>This digital note was created with love</div>
+            <div>and will be saved in our memories forever</div>
+            <div style="font-size: 12px; opacity: 0.7; margin: 8px 0;">├─────────────────────────────────────────────────────────┤</div>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <span style="opacity: 0.6;">┌</span>
+                <span>Created</span>
+                <span style="opacity: 0.6;">│</span>
+                <span style="color: var(--accent);">December 10</span>
+                <span style="opacity: 0.6;">│</span>
+                <span>2025</span>
+                <span style="opacity: 0.6;">┘</span>
+            </div>
+            <div style="font-size: 12px; opacity: 0.7; margin-top: 8px;">└─────────────────────────────────────────────────────────┘</div>
         </div>
     </div>
 
@@ -1505,8 +1494,8 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
     <div class="modal" id="favoritesModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Samantha's Favorites 💖</h2>
-                <button class="close-modal" id="closeModal">&times;</button>
+                <h2 class="modal-title">Samantha's Favorites <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="vertical-align: middle; display: inline-block; margin-left: 4px; position: relative; top: -1px;"><path fill="currentColor" d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"/></svg></h2>
+                <button class="close-modal" id="closeModal">×</button>
             </div>
 
             <div class="favorites-grid">
@@ -1602,7 +1591,7 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                 </div>
                 <p>I remember every detail about your favorites because every part of you is special to me. One day,
                     I'll
-                    cook you carbonara, bring you pink tulips <span class="tulip-emoji">🌸</span>, and decorate
+                    cook you carbonara, bring you pink tulips <span class="tulip-emoji"></span>, and decorate
                     everything in pink and wine red just for you! :333</p>
             </div>
         </div>
@@ -1651,72 +1640,52 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
                 });
             });
 
-            // Anniversary Counter Message Logic
-            const counter = document.getElementById('anniversaryCounter');
+            // Anniversary Counter Message Logic for ALL months
+            const allCounters = [
+                { id: 'anniversaryCounter-1', month: 1, msgs: ["Happy 1st month, my love! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "30 days of pure happiness <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "The beginning of forever <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "One month down, forever to go! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "My heart is yours <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>"] },
+                { id: 'anniversaryCounter', month: 2, msgs: ["Happy 2-month anniversary, my love! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "60 amazing days with you <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Every day with you is a blessing <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Here's to many more months together <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "I cherish every moment with you <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>"] },
+                { id: 'anniversaryCounter-3', month: 3, msgs: ["Happy 3-month anniversary! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "90 days of love and joy <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Three months, one heart <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Still standing side by side <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Every day I love you more <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>"] },
+                { id: 'anniversaryCounter-4', month: 4, msgs: ["Happy 4-month anniversary, mahal ko! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "120 days of endless love <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Four months of pure happiness <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Mahal kita so much! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Every moment with you is magic <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>"] },
+                { id: 'anniversaryCounter-5', month: 5, msgs: ["Month 5 is coming soon! <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Our story continues... <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "More memories to come <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "I can't wait for the future <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>", "Every month with you is special <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' style='vertical-align:middle;display:inline-block;margin-left:4px;position:relative;top:-1px;'><path fill='currentColor' d='m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z'/></svg>"] }
+            ];
 
-            if (counter) counter.addEventListener('click', function () {
-                const messages = [
-                    "Happy 2-month anniversary, my love! 💖",
-                    "60 amazing days with you 🥂",
-                    "Every day with you is a blessing 💕",
-                    "Here's to many more months together ✨",
-                    "I cherish every moment with you 💝",
-                    "You make time fly when I'm with you ⏳",
-                    "The best 2 months of my life 🌟",
-                    "My love for you grows every day 🌱",
-                    "You're my favorite hello and hardest goodbye 👋",
-                    "2 months down, forever to go! 💑"
-                ];
+            allCounters.forEach(({ id, month, msgs }) => {
+                const counter = document.getElementById(id);
+                if (counter) {
+                    counter.addEventListener('click', function () {
+                        // Remove any existing toast messages first
+                        const existingToasts = document.querySelectorAll('[data-toast-message]');
+                        existingToasts.forEach(toast => {
+                            if (toast.parentNode) {
+                                document.body.removeChild(toast);
+                            }
+                        });
 
-                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-
-                // Create a simple floating message
-                const message = document.createElement('div');
-                message.textContent = randomMsg;
-                message.style.cssText = `
-          position: fixed;
-          bottom: 30px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: var(--card);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          color: var(--text);
-          padding: 16px 30px;
-          border-radius: 16px;
-          font-weight: 600;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(229, 107, 154, 0.2);
-          border-left: 4px solid var(--accent);
-          z-index: 10000;
-          animation: slideInOut 3.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          text-align: center;
-          max-width: 90%;
-        `;
-
-                // Add keyframes for animation
-                if (!document.getElementById('toast-style')) {
-                    const styleSheet = document.createElement('style');
-                    styleSheet.id = 'toast-style';
-                    styleSheet.textContent = `
-          @keyframes slideInOut {
-            0% { opacity: 0; transform: translate(-50%, 20px); }
-            10% { opacity: 1; transform: translate(-50%, 0); }
-            90% { opacity: 1; transform: translate(-50%, 0); }
-            100% { opacity: 0; transform: translate(-50%, -20px); }
-          }
-        `;
-                    document.head.appendChild(styleSheet);
+                        const randomMsg = msgs[Math.floor(Math.random() * msgs.length)];
+                        const message = document.createElement('div');
+                        message.setAttribute('data-toast-message', 'true');
+                        message.innerHTML = randomMsg;
+                        message.style.cssText = `
+          position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
+          color: white;
+          padding: 24px 40px; border-radius: 24px; font-weight: 600;
+          box-shadow: 0 25px 50px rgba(0,0,0,0.4); 
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          z-index: 10000; animation: slideInOut 4s cubic-bezier(0.16,1,0.3,1) forwards; 
+          text-align: center; max-width: 80%; font-size: 17px;
+          letter-spacing: 0.5px;`;
+                        if (!document.getElementById('toast-style')) {
+                            const styleSheet = document.createElement('style');
+                            styleSheet.id = 'toast-style';
+                            styleSheet.textContent = `@keyframes slideInOut { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); } 8% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 92% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -45%) scale(0.9); } }`;
+                            document.head.appendChild(styleSheet);
+                        }
+                        document.body.appendChild(message);
+                        setTimeout(() => { if (message.parentNode) document.body.removeChild(message); }, 4000);
+                    });
                 }
-
-                document.body.appendChild(message);
-
-                // Remove message after animation
-                setTimeout(() => {
-                    if (message.parentNode) {
-                        document.body.removeChild(message);
-                    }
-                }, 3500);
             });
 
             // My Message / Her Message toggle per month
@@ -1738,19 +1707,6 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
 
                 section.querySelectorAll('.message-panel').forEach(panel => {
                     panel.classList.toggle('active', panel.getAttribute('data-message') === target);
-                });
-            });
-
-            // Add subtle hover effect to highlighted text
-            const highlights = document.querySelectorAll('.highlight');
-            highlights.forEach(highlight => {
-                highlight.addEventListener('mouseenter', function () {
-                    this.style.transform = 'scale(1.05)';
-                    this.style.transition = 'transform 0.2s ease';
-                });
-
-                highlight.addEventListener('mouseleave', function () {
-                    this.style.transform = 'scale(1)';
                 });
             });
 
@@ -1790,7 +1746,7 @@ you don\'t know how much you made me happy for the past few months that we\'ve b
             // Add tulip emojis to favorite items
             const tulipIcons = document.querySelectorAll('.tulip-icon');
             tulipIcons.forEach(icon => {
-                icon.innerHTML = '🌸';
+                icon.innerHTML = '';
             });
         });
     </script>
